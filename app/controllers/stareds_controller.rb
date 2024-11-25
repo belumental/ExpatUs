@@ -1,0 +1,2 @@
+class StaredsController < ApplicationController
+end
