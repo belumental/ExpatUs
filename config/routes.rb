@@ -15,10 +15,9 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :chats do
-    resources :messages, only: [:new, :create, :show]
+    resources :messages, only: [:new, :create]
 end
 
-  resources :stareds, only: [:update]
+  resources :stareds, only: [:create, :destroy]
   get 'profile', to: 'users#show', as: :user
 end
-
