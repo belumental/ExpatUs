@@ -1,3 +1,4 @@
+require 'faker'
 # This file should ensure the existence of records required to run the application in every environment (production,
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
@@ -8,17 +9,19 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 puts("destory all data we have already...")
-User.destroy_all
 Chat.destroy_all
+User.destroy_all
 
 puts("seed user...")
 users = []
 5.times do
+  f_email = Faker::Internet.email
   user = User.create(
-    email: Faker::Internet.email,
+    email: f_email,
     password: '123456',
     password_confirmation: '123456'
   )
+  puts "use user email as #{f_email}, password is: '123456'"
   users << user
 end
 
