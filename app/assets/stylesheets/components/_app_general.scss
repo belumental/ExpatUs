@@ -35,3 +35,17 @@ body {
 .description p {
   max-width: 80vw;
 }
+
+.btn-secondary {
+  background-color: #5E9C6B; 
+  color: white;
+  border: 2px solid #5E9C6B;
+  border-radius: 10px;
+}
+
+.btn-secondary:hover {
+  background-color: #3D6545;
+  color: white;
+  border-color: #3D6545;
+  transform: scale(1.05);
+}
