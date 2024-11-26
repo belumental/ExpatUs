@@ -9,15 +9,15 @@ class ChatsController < ApplicationController
     @chat = Chat.new
   end
 
-    def create
-      @chat = Chat.new(chat_params)
-      @chat.user = current_user
+  def create
+    @chat = Chat.new(chat_params)
+    @chat.user = current_user
 
-      if @chat.save
-        redirect_to list_path(@chat), notice: "Your group chas has been succesfully created!"
-      else
-        render :new, status: :unprocessable_entity
-      end
+    if @chat.save
+      redirect_to list_path(@chat), notice: "Your group chas has been succesfully created!"
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def show
