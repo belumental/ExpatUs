@@ -21,4 +21,6 @@ end
   resources :stareds, only: [:create, :destroy]
   get 'profile', to: 'users#show', as: :user
 
+  get "list", to: "chats#list", as: :list
+
 end

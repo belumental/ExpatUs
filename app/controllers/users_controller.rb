@@ -10,6 +10,6 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @chats
+    redirect_to list_path
   end
 end
