@@ -14,4 +14,7 @@ class ChatsController < ApplicationController
 
   def show
   end
+
+  def list
+  end
 end
