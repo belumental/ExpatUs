@@ -1,0 +1,19 @@
+<div class="container">
+  <h1 class="title">Trending Chats</h1>
+
+  <div class="container">
+      <% @chats.each do |chat| %>
+      <div class="col-12">
+        <%= link_to list_path(chat), style: "text-decoration: none; color: inherit;" do %>
+          <div class="card-product">
+              <div class="card-product-infos">
+                <h2 class= "chat-name"><%= chat.title%></h2>
+                <h4><%= chat.category %></h4>
+                <p><%= chat.description %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
+<p class="add-chat-button"><%= link_to "Create a Chat", new_chat_path(@chat), class: "btn btn-secondary" %></p>
