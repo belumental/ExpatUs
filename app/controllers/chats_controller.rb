@@ -6,15 +6,17 @@ class ChatsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :show]
 
   def new
-    # Add your new action implementation
+    @chat = Chat.new
   end
 
   def create
+
   end
 
   def show
   end
 
   def list
+    @chats = Chat.all
   end
 end
