@@ -14,9 +14,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
+  get "list", to: "chats#list", as: :list
+
   resources :chats do
     resources :messages, only: [:new, :create]
-end
+  end
 
   resources :stareds, only: [:create, :destroy]
   get 'profile', to: 'users#show', as: :user
@@ -24,7 +26,7 @@ end
 
   get 'yourchats', to: 'chats#list_by_user', as: :yourchats
 
-  get "list", to: "chats#list", as: :list
+
 
 
 end

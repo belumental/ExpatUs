@@ -4,7 +4,7 @@
   <div class="container">
       <% @chats.each do |chat| %>
       <div class="col-12">
-        <%= link_to list_path(chat), style: "text-decoration: none; color: inherit;" do %>
+        <%= link_to chat_path(chat), style: "text-decoration: none; color: inherit;" do %>
           <div class="card-product">
               <div class="card-product-infos">
                 <h2 class= "chat-name"><%= chat.title%></h2>
