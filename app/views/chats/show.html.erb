@@ -1,0 +1,21 @@
+<div class="container chat">
+  <%= turbo_stream_from "chat_#{@chat.id}_messages" %>
+  <div id="messages" class="messages">
+    <% @chat.messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+    <% end %>
+  </div>
+
+
+<%= simple_form_for [@chat, @message],
+  html: {class: "d-flex", data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }} do |f|
+%>
+  <% #other_user = current_user == @chat.user ? @chat.user : @chat.message.user %>
+  <%= f.input :content,
+    label: false,
+    placeholder: "Message #{current_user.username}",
+    wrapper_html: {class: "flex-grow-1"}
+  %>
+  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+<% end %>
+</div>
