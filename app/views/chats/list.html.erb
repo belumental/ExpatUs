@@ -1,21 +1,23 @@
 <div class="container">
   <h1 class="title">Trending Chats</h1>
 
-  <div class="container">
-      <% @chats.each do |chat| %>
-      <div class="col-12">
+<div class="container d-flex flex-column align-items-center">
+  <div class="row w-100">
+    <% @chats.each do |chat| %>
+      <div class="col-12 mb-4">
         <%= link_to chat_path(chat), style: "text-decoration: none; color: inherit;" do %>
-          <div class="card-product">
-              <div class="card-product-infos">
-                <h2 class= "chat-name"><%= chat.title%></h2>
-                <h4><%= chat.category %></h4>
-                <p><%= chat.description %></p>
-              </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= chat.title %></h5>
+              <h6 class="card-subtitle mb-2 text-muted"><%= chat.category %></h6>
+              <p class="card-text"><%= chat.description %></p>
             </div>
-          <% end %>
-        </div>
-      <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
+</div>
 <div class="button-container">
   <%= link_to "Create a Chat", new_chat_path(@chat), class: "btn btn-secondary" %>
 </div>
