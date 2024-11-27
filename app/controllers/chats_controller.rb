@@ -6,14 +6,23 @@ class ChatsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :show]
 
   def new
-    # Add your new action implementation
+    @chat = Chat.new
   end
 
-  def create
+    def create
+      @chat = Chat.new(chat_params)
+      @chat.user = current_user
+
+      if @chat.save
+        redirect_to list_path(@chat), notice: "Your group chas has been succesfully created!"
+      else
+        render :new, status: :unprocessable_entity
+      end
   end
 
   def show
   end
+
 
   def list_by_user
     @chats = current_user.chats
@@ -23,5 +32,14 @@ class ChatsController < ApplicationController
       @chats_with_messages_count[index]["msgcount"] = Message.where(chat_id: chat.id).count
     end
     # raise
+
+  def list
+    @chats = Chat.all
+  end
+
+  private
+
+  def chat_params
+    params.require(:chat).permit(:title, :category, :description)
   end
 end
