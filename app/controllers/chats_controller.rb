@@ -25,7 +25,6 @@ class ChatsController < ApplicationController
     @message = Message.new
   end
 
-
   def list_by_user
     @chats = current_user.chats
     @chats_with_messages_count = []
