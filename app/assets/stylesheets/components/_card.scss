@@ -1,0 +1,47 @@
+.card {
+  background-color: rgba(255, 255, 255, 0.263);
+  border-radius: 10px;  // Rounded corners
+  border: 1px solid #ddd;  // Light border color
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);  // Card lifts slightly on hover
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);  // Slightly stronger shadow on hover
+  }
+
+  .card-body {
+    padding: 1.5rem;  // Add some padding inside the card
+  }
+
+  .card-title {
+    font-size: 1.25rem;  // Slightly larger font size for the title
+    font-weight: bold;  // Bold the title
+    color: #5E9C6B;  // Dark color for the title
+  }
+
+  .card-subtitle {
+    font-size: 1rem;  // Subtitle font size
+    color: #A27ABA;  // Muted grey color for the subtitle
+  }
+
+  .card-text {
+    font-size: 0.875rem;  // Smaller font size for the description
+    color: #555;  // Darker text color for the description
+    line-height: 1.5;  // Improve line spacing for readability
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;  // Horizontally center the cards
+  align-items: center;      // Vertically center the cards
+  min-height: 100vh;        // Ensure the container takes up the full viewport height
+  flex-wrap: wrap;          // Allow the cards to wrap to the next line on smaller screens
+}
+
+.row {
+  display: flex;
+  justify-content: center;  // Horizontally center the cards within the row
+  width: 100%;
+}
