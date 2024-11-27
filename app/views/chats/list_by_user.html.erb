@@ -1,0 +1,150 @@
+<div class="main-content app-content">
+  <div class="container-fluid">
+    <div class="main-chart-wrapper p-2 gap-2 d-lg-flex">
+      <div class="chat-info border">
+        <ul class="nav nav-tabs tab-style-2 nav-justified mb-0 border-bottom d-flex"
+            id="myTab1" role="tablist">
+            <!-- <li class="nav-item border-end me-0" role="presentation">
+                <button class="nav-link active h-100" id="users-tab" data-bs-toggle="tab"
+                    data-bs-target="#users-tab-pane" type="button" role="tab"
+                    aria-controls="users-tab-pane" aria-selected="true"><i
+                        class="ri-history-line me-1 align-middle d-inline-block"></i>Recent</button>
+            </li>-->
+            <li class="nav-item border-end me-0" role="presentation">
+                <button class="nav-link active h-100" id="groups-tab" data-bs-toggle="tab"
+                    data-bs-target="#groups-tab-pane" type="button" role="tab"
+                    aria-controls="groups-tab-pane" aria-selected="true"><i
+                        class="ri-group-2-line me-1 align-middle d-inline-block"></i>Groups</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <!-- <div class="tab-pane fade show active border-0 chat-users-tab" id="users-tab-pane"
+                role="tabpanel" aria-labelledby="users-tab" tabindex="0">
+                <ul class="list-unstyled mb-0 mt-2 chat-users-tab" id="chat-msg-scroll">
+                    <li class="pb-0">
+                        <p class="text-muted fs-11 fw-semibold mb-2 op-7">ACTIVE CHATS</p>
+                    </li>
+                    <li class="checkforactive">
+                        <a href="javascript:void(0);" onclick="changeTheInfo(this,'Sujika','5','online')">
+                            <div class="d-flex align-items-top">
+                                <div class="me-1 lh-1">
+                                    <span class="avatar avatar-md online me-2 avatar-rounded">
+                                        <%= image_tag "faces/5.jpg" %>
+                                    </span>
+                                </div>
+                                <div class="flex-fill">
+                                    <p class="mb-0 fw-semibold">
+                                        Sujika <span
+                                            class="float-end text-muted fw-normal fs-11">1:32PM</span>
+                                    </p>
+                                    <p class="fs-12 mb-0">
+                                        <span class="chat-msg text-truncate">Need to go for lunch?</span>
+                                        <span class="chat-read-icon float-end align-middle"><i
+                                                class="ri-check-double-fill"></i></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="pb-0">
+                        <p class="text-muted fs-11 fw-semibold mb-2 op-7">ALL CHATS</p>
+                    </li>
+                    <li class="chat-inactive checkforactive" >
+                        <a href="javascript:void(0);" onclick="changeTheInfo(this,'Andreas','11','offline')">
+                            <div class="d-flex align-items-top">
+                                <div class="me-1 lh-1">
+                                    <span class="avatar avatar-md offline me-2 avatar-rounded" >
+                                        <%= image_tag "faces/11.jpg" %>
+                                    </span>
+                                </div>
+                                <div class="flex-fill">
+                                    <p class="mb-0 fw-semibold">
+                                        Andreas <span
+                                            class="float-end text-muted fw-normal fs-11">11:54AM</span>
+                                    </p>
+                                    <p class="fs-12 mb-0">
+                                        <span class="chat-msg text-truncate">Congratulations on your new
+                                            project</span>
+                                        <span class="chat-read-icon float-end align-middle"><i
+                                                class="ri-check-double-fill"></i></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>-->
+            <div class="tab-pane fade show active border-0 chat-groups-tab" id="groups-tab-pane"
+                role="tabpanel" aria-labelledby="groups-tab" tabindex="0">
+                <ul class="list-unstyled mb-0 mt-2 ">
+                    <li class="pb-0">
+                        <p class="text-muted fs-11 fw-semibold mb-1 op-7">MY CHATS</p>
+                    </li>
+                    <li>
+                        <div class="d-flex align-items-center justify-content-between">
+                          <% if @chats_with_messages_count.present? %>
+                            <% @chats_with_messages_count.each_with_index do |chat, index| %>
+                            <div>
+                                <p class="mb-0"><%= index+1 %>) <%= chat['title'] %></p>
+                                <p class="mb-0"><span class="badge bg-success-transparent">4
+                                        Online</span></p>
+                            </div>
+                            <div class="avatar-list-stacked my-auto">
+                                <span class="avatar avatar-sm avatar-rounded">
+                                    <%= image_tag "faces/5.jpg" %>
+                                </span>
+                                <span class="avatar avatar-sm avatar-rounded">
+                                    <%= image_tag "faces/8.jpg" %>
+                                </span>
+                                <span class="avatar avatar-sm avatar-rounded">
+                                    <%= image_tag "faces/2.jpg" %>
+                                </span>
+                                <span class="avatar avatar-sm avatar-rounded">
+                                    <%= image_tag "faces/10.jpg" %>
+                                </span>
+                                <a class="avatar avatar-sm bg-primary text-fixed-white avatar-rounded"
+                                    href="javascript:void(0);">
+                                    +<%= chat['msgcount'] %>
+                                </a>
+                            </div>
+                            <% end %>
+                          <% end %>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <p class="mb-0">2) Apartment Group</p>
+                                <p class="mb-0"><span class="badge bg-light text-dark">0 Online</span>
+                                </p>
+                            </div>
+                            <div class="avatar-list-stacked my-auto">
+                                <span class="avatar avatar-sm avatar-rounded">
+                                    <img src="../assets/images/faces/5.jpg" alt="img">
+                                </span>
+                                <span class="avatar avatar-sm avatar-rounded">
+                                    <img src="../assets/images/faces/6.jpg" alt="img">
+                                </span>
+                                <span class="avatar avatar-sm avatar-rounded">
+                                    <img src="../assets/images/faces/12.jpg" alt="img">
+                                </span>
+                                <span class="avatar avatar-sm avatar-rounded">
+                                    <img src="../assets/images/faces/3.jpg" alt="img">
+                                </span>
+                                <a class="avatar avatar-sm bg-primary text-fixed-white avatar-rounded"
+                                    href="javascript:void(0);">
+                                    +53
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>
