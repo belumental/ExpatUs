@@ -37,10 +37,14 @@ body {
 }
 
 .btn-secondary {
-  background-color: #5E9C6B; 
+  display: block; /* Ensure buttons are block-level elements */
+  text-align: center;
+  background-color: #5E9C6B;
   color: white;
   border: 2px solid #5E9C6B;
   border-radius: 10px;
+  width: 60%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .btn-secondary:hover {
@@ -48,4 +52,13 @@ body {
   color: white;
   border-color: #3D6545;
   transform: scale(1.05);
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column; /* Stack the buttons vertically */
+  gap: 10px;
+  max-width: 300px;
+  margin: 0 auto; /* Center the container horizontally */
+  align-items: center;
 }
