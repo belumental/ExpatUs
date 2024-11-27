@@ -1,0 +1,10 @@
+<div class="simple-form">
+  <%= simple_form_for(@chat) do |f| %>
+    <div class="input">
+      <%= f.input :title %>
+      <%= f.input :category %>
+      <%= f.input :description %>
+      <p><%= f.submit "Create Group Chat", class: "btn btn-secondary" %></p>
+    </div>
+  <% end %>
+</div>
