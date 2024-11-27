@@ -25,6 +25,11 @@ class ChatsController < ApplicationController
 
   def list
     @chats = Chat.all
+    if params[:query].present?
+      @chats = Chat.search_by_title_and_synopsis(params[:query])
+    else
+      @chats = Chat.all
+    end
   end
 
   private

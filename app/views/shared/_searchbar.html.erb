@@ -1,0 +1,16 @@
+ <div class="row justify-content-center search">
+    <div class="col-sm-4 my-3">
+      <%= form_with url: list_path, method: :get, class: "d-flex" do %>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="fas fa-search"></i>
+          </span>
+          <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                placeholder: "🔍 Search",
+          %>
+        </div>
+      <% end %>
+    </div>
+  </div>
