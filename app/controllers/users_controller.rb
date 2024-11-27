@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+
+
   def profile
     params[:username]
   end
@@ -10,6 +12,6 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    redirect_to list_path
+    #redirect_to list_path
   end
 end
