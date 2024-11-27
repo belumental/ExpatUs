@@ -1,0 +1,22 @@
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 0;
+  background-color: rgba(255, 255, 255, 0.263);
+
+  .footer-icon {
+    width: 30px; /* Set the size of the avatar */
+    height: 30px; /* Set the size of the avatar */
+    object-fit: contain;/* Ensure the image fits without distortion */
+    transition: transform 0.3s ease; /* Smooth zoom on hover */
+
+    &:hover {
+      transform: scale(1.1); /* Slight zoom effect on hover */
+    }
+  }
+}

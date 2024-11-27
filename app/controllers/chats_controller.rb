@@ -21,6 +21,19 @@ class ChatsController < ApplicationController
   end
 
   def show
+    @chat = Chat.find(params[:id])
+    @message = Message.new
+  end
+
+
+  def list_by_user
+    @chats = current_user.chats
+    @chats_with_messages_count = []
+    @chats.each_with_index do |chat, index|
+      @chats_with_messages_count[index] = chat.attributes.dup
+      @chats_with_messages_count[index]["msgcount"] = Message.where(chat_id: chat.id).count
+    end
+    # raise
   end
 
   def list
