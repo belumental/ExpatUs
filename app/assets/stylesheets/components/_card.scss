@@ -33,11 +33,11 @@
 }
 
 .container {
-  display: flex;
+  // display: flex;
   justify-content: center;  // Horizontally center the cards
   align-items: center;      // Vertically center the cards
-  min-height: 100vh;        // Ensure the container takes up the full viewport height
-  flex-wrap: wrap;          // Allow the cards to wrap to the next line on smaller screens
+  // min-height: 100vh;        // Ensure the container takes up the full viewport height
+  // flex-wrap: wrap;          // Allow the cards to wrap to the next line on smaller screens
 }
 
 .row {
