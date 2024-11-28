@@ -1,6 +1,6 @@
 <div><%= render "shared/searchbar" %></div>
 
-<%= image_tag url_for(@user_avatar) if @user_avatar.present? %>
+<%= cl_image_tag(@user_avatar) if @user_avatar.present? %>
 
 <div class="button-container">
   <%= link_to "Chats Created By Me", list_path(@chat), class: "btn btn-secondary" %>
@@ -11,5 +11,9 @@
 </div>
 <div class="button-container">
   <%= link_to "Starred Messages", list_path(@chat), class: "btn btn-secondary" %>
+  <%# path will be changed according to chats created by me page %>
+</div>
+<div class="button-container">
+  <%= link_to "Log Out", root_path, class: "btn btn-secondary" %>
   <%# path will be changed according to chats created by me page %>
 </div>

@@ -17,7 +17,8 @@
                 autofocus: true,
                 input_html: { autocomplete: "Username" }%>
     <%= f.input :picture_url,
-                required: false,
+                as: :file,
+                required: true,
                 label: "Profile Picture"%>
     <%= f.input :email,
                 required: true,
