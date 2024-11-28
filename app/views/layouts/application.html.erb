@@ -19,8 +19,10 @@
   </head>
 
   <body class="app-background">
-    <%= yield %>
-    <%= render "shared/flashes" %>
+    <div>
+      <%= yield %>
+      <%= render "shared/flashes" %>
+    </div>
     <%= render "chats/footer" %>
   </body>
 </html>

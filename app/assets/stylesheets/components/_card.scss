@@ -1,7 +1,7 @@
 .card {
   background-color: rgba(255, 255, 255, 0.263);
   border-radius: 10px;  // Rounded corners
-  border: 1px solid #ddd;  // Light border color
+  // border: 1px solid #ddd;  // Light border color
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
@@ -16,8 +16,8 @@
 
   .card-title {
     font-size: 1.25rem;  // Slightly larger font size for the title
-    font-weight: bold;  // Bold the title
-    color: #5E9C6B;  // Dark color for the title
+    // font-weight: bold;  // Bold the title
+    color: white;  // Dark color for the title
   }
 
   .card-subtitle {
