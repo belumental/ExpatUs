@@ -20,7 +20,7 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  // font-family: 'Poppins', sans-serif;
   color: white;
   text-align: center;
 }
@@ -61,4 +61,8 @@ body {
   max-width: 300px;
   margin: 0 auto; /* Center the container horizontally */
   align-items: center;
+}
+
+.title {
+  margin: 2em;
 }
