@@ -1,6 +1,10 @@
 <div><%= render "shared/searchbar" %></div>
 
-<%= cl_image_tag @user.photo.key %>
+<%= cl_image_tag @user.photo.key,  transformation: [
+  {aspect_ratio: "1.0", width: 150, crop: "fill"},
+  {radius: "max"},
+  {fetch_format: "auto"}
+  ]%>
 
 <div class="button-container">
   <%= link_to "Chats Created By Me", list_path(@chat), class: "btn btn-secondary" %>
