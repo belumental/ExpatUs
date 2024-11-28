@@ -1,6 +1,6 @@
 <div><%= render "shared/searchbar" %></div>
 
-<%= cl_image_tag(@user_avatar) if @user_avatar.present? %>
+<%= cl_image_tag @user.photo.key %>
 
 <div class="button-container">
   <%= link_to "Chats Created By Me", list_path(@chat), class: "btn btn-secondary" %>
