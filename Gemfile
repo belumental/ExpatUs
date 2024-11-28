@@ -47,6 +47,7 @@ gem "sassc-rails"
 gem 'faker'
 gem "solid_cable"
 gem 'ostruct'
+gem "cloudinary"
 
 group :development, :test do
   gem "dotenv-rails"
