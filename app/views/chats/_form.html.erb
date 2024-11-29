@@ -2,7 +2,7 @@
   <%= simple_form_for(@chat) do |f| %>
     <div class="input">
       <%= f.input :title %>
-      <%= f.input :category %>
+      <%= f.input :category, :collection => [:Life, :Job, :Social, :Shopping, :Housing, :Language, :Food, :Legal] %>
       <%= f.input :description %>
       <p><%= f.submit "Create Chat", class: "btn btn-secondary" %></p>
     </div>

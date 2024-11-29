@@ -55,6 +55,10 @@ class ChatsController < ApplicationController
     end
   end
 
+  def created_by_user
+    @chats = Chat.where(user_id: current_user.id)
+  end
+
   private
 
   def chat_params

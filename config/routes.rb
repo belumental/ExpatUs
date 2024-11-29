@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get 'profile', to: 'users#show', as: :user
 
   get 'yourchats', to: 'chats#list_by_user', as: :yourchats
+  get 'createdchats', to: 'chats#created_by_user', as: :createdchats
 
   # devise_scope :user do
   #   delete '/users/sign_out', to: 'devise/sessions#destroy'

@@ -1,0 +1,17 @@
+<h1>Chats</h1>
+
+<div class="row w-100">
+      <% @chats.each do |chat| %>
+        <div class="col-12 mb-4">
+          <%= link_to chat_path(chat), style: "text-decoration: none; color: inherit;" do %>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><%= chat.title %></h5>
+                <h6 class="card-subtitle mb-2 text-muted"><%= chat.category %></h6>
+                <p class="card-text"><%= chat.description %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
