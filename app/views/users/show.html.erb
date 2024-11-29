@@ -6,10 +6,21 @@
   {fetch_format: "auto"}
   ]%>
 
+<div class="row w-100">
+  <div class="col-12 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h6><%= current_user.username %></h6>
+        <h6><%= current_user.name + " " + current_user.last_name %></h6>
+        <h6><%= current_user.email %></h6>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="button-container">
   <%= link_to "Chats Created By Me", createdchats_path(@chat), class: "btn btn-secondary" %>
 </div>
-<%# path will be changed according to chats created by me page %>
 <div class="button-container">
   <%= link_to "Chats I Joined", list_path(@chat), class: "btn btn-secondary" %>
 </div>
@@ -19,5 +30,4 @@
 </div>
 <div class="button-container">
   <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-secondary" %>
-  <%# path will be changed according to chats created by me page %>
 </div>
