@@ -95,6 +95,15 @@ Rails.application.configure do
   # Only use :id for inspections in production.
   # config.active_record.attributes_for_inspect = [ :id ]
 
+  config.hosts << "expat-us.herokuapp.com"
+
+  config.action_cable.url = "wss://expat-us.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = [
+    'https://expat-us.herokuapp.com',
+    'http://expat-us.herokuapp.com'
+  ]
+
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
   #   "example.com",     # Allow requests from example.com
