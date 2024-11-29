@@ -187,6 +187,9 @@ GEM
     mini_mime (1.1.5)
     minitest (5.25.2)
     msgpack (1.7.5)
+    multipart-post (2.4.1)
+    net-http (0.5.0)
+      uri
     net-imap (0.5.1)
       date
       net-protocol
@@ -344,6 +347,7 @@ GEM
     unicode-display_width (3.1.2)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
+    uri (1.0.2)
     useragent (0.16.10)
     warden (1.2.9)
       rack (>= 2.0.9)
@@ -409,4 +413,4 @@ RUBY VERSION
    ruby 3.3.5p100
 
 BUNDLED WITH
-   2.5.22
+   2.5.23
