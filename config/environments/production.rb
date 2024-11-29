@@ -95,12 +95,12 @@ Rails.application.configure do
   # Only use :id for inspections in production.
   # config.active_record.attributes_for_inspect = [ :id ]
 
-  config.hosts << "expat-us.herokuapp.com"
+  config.hosts << "expat-us-115babbe9461.herokuapp.com"
 
-  config.action_cable.url = "wss://expat-us.herokuapp.com/cable"
+  config.action_cable.url = "wss://expat-us-115babbe9461.herokuapp.com/cable"
   config.action_cable.allowed_request_origins = [
-    'https://expat-us.herokuapp.com',
-    'http://expat-us.herokuapp.com'
+    'https://expat-us-115babbe9461.herokuapp.com/',
+    'http://expat-us-115babbe9461.herokuapp.com/'
   ]
 
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
