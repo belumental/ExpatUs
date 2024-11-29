@@ -19,6 +19,10 @@
     height: 100%;
     overflow: scroll;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    width: 100%;
   }
 
   #new_message {
@@ -28,5 +32,38 @@
     .form-group {
       margin-bottom: 0;
     }
+  }
+
+  .message.sent .message-block{
+    float: right;
+  }
+  .message.received .message-block{
+    float: left;
+  }
+
+  .message-info {
+    opacity: 0.5;
+    text-align: center;
+    width: fit-content;
+  }
+
+  .message-content {
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    max-width: 70%;
+    width: fit-content;
+    word-wrap: break-word;
+  }
+
+  .message.sent .message-content {
+    align-self: flex-start;
+    background: $blue;
+    color: $light-gray;
+  }
+
+  .message.received .message-content {
+    align-self: flex-end;
+    background: $gray-200;
   }
 }

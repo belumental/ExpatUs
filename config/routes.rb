@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
   devise_for :users
   root to: "chats#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -23,10 +24,6 @@ Rails.application.routes.draw do
   resources :stareds, only: [:create, :destroy]
   get 'profile', to: 'users#show', as: :user
 
-
   get 'yourchats', to: 'chats#list_by_user', as: :yourchats
-
-
-
 
 end

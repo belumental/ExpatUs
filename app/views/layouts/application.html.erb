@@ -18,7 +18,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="app-background">
+  <body class="app-background" data-current-user-id="<%= current_user ? current_user.id : "" %>">
     <%= yield %>
     <%= render "shared/flashes" %>
     <%= render "chats/footer" %>
