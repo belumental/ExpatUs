@@ -1,11 +1,14 @@
 <div class="row justify-content-center search">
   <div class="col-sm-3 my-3">
     <%= form_with url: list_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
+      <div class="input-container">
+        <i class="fa fa-search search-icon"></i>
+        <%= text_field_tag :query,
             params[:query],
             class: "form-control rounded-pill ps-3",
-            placeholder: "Search"
+            placeholder: ""
       %>
+      </div>
     <% end %>
   </div>
 </div>
