@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-
-
   def profile
     params[:username]
   end
@@ -13,11 +11,10 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     #redirect_to list_path
-    @chats = Chat.all
-    if params[:query].present?
-      @chats = Chat.search_by_title_and_synopsis(params[:query])
-    else
-      @chats = Chat.all
-    end
+    @chats = if params[:query].present?
+        Chat.search_by_title_and_synopsis(params[:query])
+      else
+        Chat.all
+      end
   end
 end

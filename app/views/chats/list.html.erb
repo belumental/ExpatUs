@@ -1,25 +1,25 @@
-<div class="container">
-<div><%= render "shared/searchbar" %></div>
-
+<div class="containter">
+  <%= render "shared/searchbar" %>
+  <h1 class="title">Welcome Home <%= current_user.username  %></h1>
   <h1 class="title">Trending Chats</h1>
-
-<div class="container d-flex flex-column align-items-center">
-  <div class="row w-100">
-    <% @chats.each do |chat| %>
-      <div class="col-12 mb-4">
-        <%= link_to chat_path(chat), style: "text-decoration: none; color: inherit;" do %>
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"><%= chat.title %></h5>
-              <h6 class="card-subtitle mb-2 text-muted"><%= chat.category %></h6>
-              <p class="card-text"><%= chat.description %></p>
+  <div class="container d-flex flex-column align-items-center">
+    <div class="row w-100">
+      <% @chats.each do |chat| %>
+        <div class="col-12 mb-4">
+          <%= link_to chat_path(chat), style: "text-decoration: none; color: inherit;" do %>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><%= chat.title %></h5>
+                <h6 class="card-subtitle mb-2 text-muted"><%= chat.category %></h6>
+                <p class="card-text"><%= chat.description %></p>
+              </div>
             </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="button-container">
+      <%= link_to "Create a Chat", new_chat_path(@chat), class: "btn btn-secondary" %>
+    </div>
   </div>
-</div>
-<div class="button-container">
-  <%= link_to "Create a Chat", new_chat_path(@chat), class: "btn btn-secondary" %>
 </div>

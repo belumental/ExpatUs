@@ -3,7 +3,8 @@ source "https://rubygems.org"
 ruby "3.3.5"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.2.0"
+
+gem "rails", "~> 7.2"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 # Use postgresql as the database for Active Record
@@ -47,6 +48,7 @@ gem "sassc-rails"
 gem 'faker'
 gem "solid_cable", "~> 3.0.2"
 gem 'ostruct'
+gem "cloudinary"
 
 group :development, :test do
   gem "dotenv-rails"
