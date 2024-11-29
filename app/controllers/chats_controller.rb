@@ -26,15 +26,23 @@ class ChatsController < ApplicationController
   end
 
   def list_by_user
-    if params[:query].present?
-      @chats = current_user.chats
+    unless params[:query].present?
+      my_messages = Message.where(user_id: current_user.id)
+      chats = []
+      my_messages.each do |my_message|
+        unless chats.include?(my_message.chat)
+          chats.push(my_message.chat)
+        end
+      end
+      # @chats = User.find(current_user.id).chats
       @chats_with_messages_count = []
-      @chats.each_with_index do |chat, index|
+      chats.each_with_index do |chat, index|
         @chats_with_messages_count[index] = chat.attributes.dup
         @chats_with_messages_count[index]["msgcount"] = Message.where(chat_id: chat.id).count
+        @chats_with_messages_count[index]["online_num"] = Chat.includes(:user).where(chats: {id: chat.id}, user: {online: true}).count
       end
     else
-      @chats = current_user.chats
+      self.list
     end
   end
 

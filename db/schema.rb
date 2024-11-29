@@ -92,6 +92,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_28_134136) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.text "picture_url"
+    t.boolean "online", default: false
     t.string "name"
     t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
