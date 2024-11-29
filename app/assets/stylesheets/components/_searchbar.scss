@@ -3,10 +3,15 @@
 }
 
 .search {
+  display: flex;
+  justify-content: center; /* Centers the row horizontally */
+  align-items: center; /* Aligns vertically (optional) */
+  margin: 0 auto;
+}
+
+.search {
   .col-sm-3 {
-    margin: 0 auto; // Center the column horizontally
     display: flex;
     justify-content: center; // Align content in the center
   }
 }
-

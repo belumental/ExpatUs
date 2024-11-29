@@ -1,33 +1,38 @@
 <div><%= render "shared/searchbar" %></div>
 
-<%= cl_image_tag @user.photo.key,  transformation: [
-  {aspect_ratio: "1.0", width: 150, crop: "fill"},
-  {radius: "max"},
-  {fetch_format: "auto"}
-  ]%>
+<div class="profile-image-container">
+  <%= cl_image_tag @user.photo.key,  transformation: [
+    {aspect_ratio: "1.0", width: 150, crop: "fill"},
+    {radius: "max"},
+    {fetch_format: "auto"}
+    ]%>
+</div>
 
-<div class="row w-100">
+<div class="row w-100 user-profile">
   <div class="col-12 mb-4">
-    <div class="card">
+    <div class="card user-card">
       <div class="card-body">
-        <h6><%= current_user.username %></h6>
-        <h6><%= current_user.name + " " + current_user.last_name %></h6>
-        <h6><%= current_user.email %></h6>
+        <h6 class="username"><%= current_user.username.capitalize %></h6>
+        <h6 class="full-name"><%= current_user.name.capitalize + " " + current_user.last_name.capitalize %></h6>
+        <h6 class="email"><%= current_user.email %></h6>
       </div>
     </div>
   </div>
 </div>
 
 <div class="button-container">
-  <%= link_to "Chats Created By Me", createdchats_path(@chat), class: "btn btn-secondary" %>
+  <%= link_to "Chats I Created", createdchats_path(@chat), class: "btn btn-secondary" %>
 </div>
+<br>
 <div class="button-container">
   <%= link_to "Chats I Joined", list_path(@chat), class: "btn btn-secondary" %>
 </div>
+<br>
 <div class="button-container">
-  <%= link_to "Starred Messages", list_path(@chat), class: "btn btn-secondary" %>
+  <%= link_to "Favorites", list_path(@chat), class: "btn btn-secondary" %>
   <%# path will be changed according to chats created by me page %>
 </div>
+<br>
 <div class="button-container">
   <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-secondary" %>
 </div>
