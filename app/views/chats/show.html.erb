@@ -1,3 +1,7 @@
+<div>
+  <%= link_to image_tag('back', class: "back-button"), yourchats_path %>
+</div>
+
 <div class="container chat">
   <%= turbo_stream_from "chat_#{@chat.id}_messages" %>
   <div id="messages" class="messages">
@@ -13,7 +17,7 @@
     <% #other_user = current_user == @chat.user ? @chat.user : @chat.message.user %>
     <%= f.input :content,
       label: false,
-      placeholder: "Message #{current_user.username}",
+      placeholder: "Message",
       wrapper_html: {class: "flex-grow-1"}
     %>
     <%= f.submit "Send", class: "btn btn-primary mb-3" %>

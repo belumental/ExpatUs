@@ -36,10 +36,15 @@ class ChatsController < ApplicationController
       end
       # @chats = User.find(current_user.id).chats
       @chats_with_messages_count = []
+      online_num = self.compute_online_user_num_on_chat.to_h
       chats.each_with_index do |chat, index|
         @chats_with_messages_count[index] = chat.attributes.dup
         @chats_with_messages_count[index]["msgcount"] = Message.where(chat_id: chat.id).count
-        @chats_with_messages_count[index]["online_num"] = Chat.includes(:user).where(chats: {id: chat.id}, user: {online: true}).count
+        online_num.keys.each do |key|
+          if @chats_with_messages_count[index]['id'] == key
+            @chats_with_messages_count[index]["online_num"] = online_num[key]
+          end
+        end
       end
     else
       self.list
@@ -59,5 +64,25 @@ class ChatsController < ApplicationController
 
   def chat_params
     params.require(:chat).permit(:title, :category, :description)
+  end
+
+  def compute_online_user_num_on_chat
+     # Select all message that message.user.online = true
+     messages = Message.includes(:user).where(user: {online: true})
+     # Remove repeatted messages
+     seen = Set.new
+     now_ele_arr = messages.select do |item|
+       identifier = "#{item['user_id']}_#{item['chat_id']}"
+       unless seen.include?(identifier)
+         seen.add(identifier)
+       end
+     end
+     # Count the num by chat_id
+     counts = Hash.new(0)
+     now_ele_arr.each do |item|
+       value = item.chat_id
+       counts[value] += 1
+     end
+     counts
   end
 end
