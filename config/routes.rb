@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   get 'yourchats', to: 'chats#list_by_user', as: :yourchats
   get 'createdchats', to: 'chats#created_by_user', as: :createdchats
+  post 'chats/:id/join', to: 'chats#join', as: :join_chat
 
   # devise_scope :user do
   #   delete '/users/sign_out', to: 'devise/sessions#destroy'

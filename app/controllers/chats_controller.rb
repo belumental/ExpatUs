@@ -46,12 +46,24 @@ class ChatsController < ApplicationController
           end
         end
       end
+          else
+            self.list
+    end
+  end
+
+  def join # it added for join button
+    @chat = Chat.find(params[:id])
+    chats = []
+    if @chat && !current_user.chats.include?(@chat)
+      current_user.chats << @chat
+      join.js { render json: { success: true } }
     else
-      self.list
+      join.js { render json: { success: false, message: "You are already in this chat or chat doesn't exist." }}
     end
   end
 
   def list
+    @user = current_user
     @chats = Chat.all
     if params[:query].present?
       @chats = Chat.search_by_title_and_synopsis(params[:query])
@@ -71,22 +83,22 @@ class ChatsController < ApplicationController
   end
 
   def compute_online_user_num_on_chat
-     # Select all message that message.user.online = true
-     messages = Message.includes(:user).where(user: {online: true})
-     # Remove repeatted messages
-     seen = Set.new
-     now_ele_arr = messages.select do |item|
-       identifier = "#{item['user_id']}_#{item['chat_id']}"
-       unless seen.include?(identifier)
-         seen.add(identifier)
-       end
-     end
-     # Count the num by chat_id
-     counts = Hash.new(0)
-     now_ele_arr.each do |item|
-       value = item.chat_id
-       counts[value] += 1
-     end
-     counts
+    # Select all message that message.user.online = true
+    messages = Message.includes(:user).where(user: {online: true})
+    # Remove repeatted messages
+    seen = Set.new
+    now_ele_arr = messages.select do |item|
+      identifier = "#{item['user_id']}_#{item['chat_id']}"
+      unless seen.include?(identifier)
+        seen.add(identifier)
+      end
+    end
+    # Count the num by chat_id
+    counts = Hash.new(0)
+    now_ele_arr.each do |item|
+      value = item.chat_id
+      counts[value] += 1
+    end
+    counts
   end
 end
