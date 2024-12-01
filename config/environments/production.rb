@@ -41,8 +41,15 @@ Rails.application.configure do
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
-  # config.action_cable.url = "wss://example.com/cable"
-  # config.action_cable.allowed_request_origins = [ "http://example.com", /http:\/\/example.*/ ]
+  # config.hosts << "expat-us-115babbe9461.herokuapp.com"
+
+  # config.action_cable.url = "wss://expat-us-115babbe9461.herokuapp.com/cable"
+  # config.action_cable.allowed_request_origins = [
+  #   'https://expat-us-115babbe9461.herokuapp.com/',
+  #   'http://expat-us-115babbe9461.herokuapp.com/'
+  # ]
+  config.action_cable.url = "wss://expat-us-115babbe9461.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = [ "http://expat-us-115babbe9461.herokuapp.com", /http:\/\/expat-us-115babbe9461.herokuapp.*/ ]
 
   # Assume all access to the app is happening through a SSL-terminating reverse proxy.
   # Can be used together with config.force_ssl for Strict-Transport-Security and secure cookies.
@@ -94,14 +101,6 @@ Rails.application.configure do
 
   # Only use :id for inspections in production.
   # config.active_record.attributes_for_inspect = [ :id ]
-
-  config.hosts << "expat-us-115babbe9461.herokuapp.com"
-
-  config.action_cable.url = "wss://expat-us-115babbe9461.herokuapp.com/cable"
-  config.action_cable.allowed_request_origins = [
-    'https://expat-us-115babbe9461.herokuapp.com/',
-    'http://expat-us-115babbe9461.herokuapp.com/'
-  ]
 
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
   # Enable DNS rebinding protection and other `Host` header attacks.
