@@ -49,7 +49,7 @@ Rails.application.configure do
     # ]
   config.action_cable.mount_path = '/cable'
   config.action_cable.url = "wss://expat-us-115babbe9461.herokuapp.com/cable"
-  config.action_cable.allowed_request_origins = [ "https://expat-us-115babbe9461.herokuapp.com", /http(s)?:\/\/expat-us-115babbe9461.herokuapp.com.*/ ]
+  config.action_cable.allowed_request_origins = [ "https://expat-us-115babbe9461.herokuapp.com", %r{\Ahttps://expat-us-115babbe9461.herokuapp.com(/.*)?\z} ]
 
   # Assume all access to the app is happening through a SSL-terminating reverse proxy.
   # Can be used together with config.force_ssl for Strict-Transport-Security and secure cookies.
