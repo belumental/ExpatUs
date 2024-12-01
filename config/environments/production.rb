@@ -40,14 +40,14 @@ Rails.application.configure do
   config.active_storage.service = :cloudinary
 
   # Mount Action Cable outside main process or domain.
-  # config.action_cable.mount_path = nil
   # config.hosts << "expat-us-115babbe9461.herokuapp.com"
 
   # config.action_cable.url = "wss://expat-us-115babbe9461.herokuapp.com/cable"
   # config.action_cable.allowed_request_origins = [
-  #   'https://expat-us-115babbe9461.herokuapp.com/',
-  #   'http://expat-us-115babbe9461.herokuapp.com/'
-  # ]
+    #   'https://expat-us-115babbe9461.herokuapp.com/',
+    #   'http://expat-us-115babbe9461.herokuapp.com/'
+    # ]
+  config.action_cable.mount_path = '/cable'
   config.action_cable.url = "wss://expat-us-115babbe9461.herokuapp.com/cable"
   config.action_cable.allowed_request_origins = [ "https://expat-us-115babbe9461.herokuapp.com", /http(s)?:\/\/expat-us-115babbe9461.herokuapp.com.*/ ]
 
