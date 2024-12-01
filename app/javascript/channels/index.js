@@ -1,2 +1,2 @@
-import "./consumer"
-import "./presence_channel"
+import "channels/consumer"
+import "channels/presence_channel"
