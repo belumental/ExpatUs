@@ -23,17 +23,28 @@ class ChatsController < ApplicationController
   def show
     @chat = Chat.find(params[:id])
     @message = Message.new
+
+    if current_user.chats.include?(@chat)
+      @joined = true
+    else
+      @joined = false
+    end
   end
 
   def list_by_user
     unless params[:query].present?
       my_messages = Message.where(user_id: current_user.id)
-      chats = []
+
+      # to get the chats we clicked 'join' for
+      chats = current_user.chats
+
+      # to get the chats we have written a message in
       my_messages.each do |my_message|
         unless chats.include?(my_message.chat)
           chats.push(my_message.chat)
         end
       end
+
       # @chats = User.find(current_user.id).chats
       @chats_with_messages_count = []
       online_num = self.compute_online_user_num_on_chat.to_h
@@ -46,19 +57,8 @@ class ChatsController < ApplicationController
           end
         end
       end
-          else
-            self.list
-    end
-  end
-
-  def join # it added for join button
-    @chat = Chat.find(params[:id])
-    chats = []
-    if @chat && !current_user.chats.include?(@chat)
-      current_user.chats << @chat
-      join.js { render json: { success: true } }
     else
-      join.js { render json: { success: false, message: "You are already in this chat or chat doesn't exist." }}
+      self.list
     end
   end
 

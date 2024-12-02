@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one_attached :photo
   # user.picture_url
-  has_many :chats
+  has_many :joined_chats
+  has_many :chats, through: :joined_chats
   has_many :messages
   has_many :stareds
 

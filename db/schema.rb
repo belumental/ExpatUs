@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_29_131440) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_02_084100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_29_131440) do
     t.datetime "updated_at", null: false
     t.string "description"
     t.index ["user_id"], name: "index_chats_on_user_id"
+  end
+
+  create_table "joined_chats", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "chat_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_id"], name: "index_joined_chats_on_chat_id"
+    t.index ["user_id"], name: "index_joined_chats_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -102,6 +111,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_29_131440) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "chats", "users"
+  add_foreign_key "joined_chats", "chats"
+  add_foreign_key "joined_chats", "users"
   add_foreign_key "messages", "chats"
   add_foreign_key "messages", "users"
   add_foreign_key "stareds", "messages"
