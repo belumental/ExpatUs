@@ -1,7 +1,6 @@
 class JoinedChatsController < ApplicationController
 
   def create
-    p params
 
     @chat = Chat.find(params[:chat_id])
     @joined_chat = JoinedChat.new
@@ -17,7 +16,6 @@ class JoinedChatsController < ApplicationController
         format.html { render 'chat/show' }
       end
     end
-
 
   end
 end
