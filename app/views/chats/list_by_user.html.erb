@@ -79,38 +79,29 @@
             </div>-->
             <div class="tab-pane fade show active border-0 chat-groups-tab" id="groups-tab-pane"
                 role="tabpanel" aria-labelledby="groups-tab" tabindex="0">
-                <ul class="list-unstyled mb-0 mt-2 ">
+                <ul class="list-unstyled mb-0 mt-2 " id="my-chats-online-users">
                     <%# <li class="pb-0">
                         <p class="text-muted fs-11 fw-semibold mb-1 op-7">MY CHATS</p>
                     </li> %>
                     <% if @chats_with_messages_count.present? %>
-                      <% @chats_with_messages_count.each_with_index do |chat, index| %>
-                      <li>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div>
-                                <p class="mb-0"><%= link_to chat['title'], chat_path(chat['id']) %></p>
-                                <div id="online-users-list"></div>
-                                <p class="mb-0">
-                                  <span class="badge bg-success-transparent" id="online-users-list-<%= chat['id'] %>"><%= chat['online_num'] %> Online</span>
-                                </p>
-                            </div>
-                            <div class="avatar-list-stacked my-auto">
-                                <span class="avatar avatar-sm avatar-rounded">
-                                    <%= image_tag "faces/5.jpg" %>
-                                </span>
-                                <span class="avatar avatar-sm avatar-rounded">
-                                    <%= image_tag "faces/8.jpg" %>
-                                </span>
-                                <span class="avatar avatar-sm avatar-rounded">
-                                    <%= image_tag "faces/2.jpg" %>
-                                </span>
-                                <span class="avatar avatar-sm avatar-rounded">
-                                    <%= image_tag "faces/10.jpg" %>
-                                </span>
-                                <%= link_to "+#{chat['msgcount']}", chat_path(chat['id']) , class: "avatar avatar-sm bg-primary text-fixed-white avatar-rounded" %>
-                            </div>
-                        </div>
-                      </li>
+                      <% @chats_with_messages_count.each do |chat| %>
+                        <li>
+                          <div class="d-flex align-items-center justify-content-between">
+                              <div>
+                                  <p class="mb-0">
+                                    <a href="/chats/<%= chat['id']%>"><%= chat['title'] %></a>
+                                  </p>
+                                  <div id="online-users-list"></div>
+                                  <p class="mb-0">
+                                    <span class="badge bg-success-transparent" id="online-users-list-<%= chat['id'] %>"><%= chat['online_num'].length %> Online</span>
+                                  </p>
+                              </div>
+                              <div class="avatar-list-stacked my-auto" id="online-users-list-avatar-<%= chat['id'] %>">
+                                <%= render "chats/my_chats_online_users", online_num: chat['online_num'], chat: chat %>
+                                <a href="/chats/<%= chat['id']%>" class="avatar avatar-sm bg-primary text-fixed-white avatar-rounded"><%= "+#{chat['msgcount']}" %></a>
+                              </div>
+                          </div>
+                        </li>
                       <% end %>
                     <% else %>
                       <p class="fs-11 fw-semibold mb-1 op-7">You haven't joined any chat group yet, go find topics that interest you!</p>

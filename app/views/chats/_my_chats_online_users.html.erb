@@ -1,0 +1,6 @@
+
+<% online_num.each do |user| %>
+  <span class="avatar avatar-sm avatar-rounded">
+    <%= cl_image_tag user.photo.key %>
+  </span>
+<% end %>
