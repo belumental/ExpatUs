@@ -21,15 +21,11 @@
 </div>
 
 <div class="button-container">
-  <%= link_to "Chats I Created", createdchats_path(@chat), class: "btn btn-secondary" %>
+  <%= link_to "My Chats", yourchats_path, class: "btn btn-secondary" %>
 </div>
 <br>
 <div class="button-container">
-  <%= link_to "Chats I Joined", list_path(@chat), class: "btn btn-secondary" %>
-</div>
-<br>
-<div class="button-container">
-  <%= link_to "Favorites", list_path(@chat), class: "btn btn-secondary" %>
+  <%= link_to "Favorites", stared_path(@message), class: "btn btn-secondary" %>
   <%# path will be changed according to chats created by me page %>
 </div>
 <br>

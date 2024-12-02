@@ -8,13 +8,19 @@
   left: 0;
   width: 100%;
   padding: 0 20px;
+  margin-top: 20px;
   background-color: rgba(255, 255, 255, 0.263);
+  box-shadow: none; /* Temporarily disable box shadows */
+  border: none;
+  z-index: 999;
 
   .footer-icon {
-    width: 30px; /* Set the size of the avatar */
-    height: 30px; /* Set the size of the avatar */
+    width: 40px; /* Set the size of the avatar */
+    height: 40px; /* Set the size of the avatar */
     object-fit: contain;/* Ensure the image fits without distortion */
     transition: transform 0.3s ease; /* Smooth zoom on hover */
+    margin-top: 10px;
+    margin-bottom: 10px;
 
     &:hover {
       transform: scale(1.1); /* Slight zoom effect on hover */

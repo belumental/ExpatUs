@@ -1,25 +1,29 @@
-.search ::placeholder {
-  color: rgb(159, 159, 159);
-}
-
-.search {
-  display: flex;
-  justify-content: center; /* Centers the row horizontally */
-  align-items: center; /* Aligns vertically (optional) */
-  margin: 0 auto;
-}
-
-.search {
-  .col-sm-3 {
-    display: flex;
-    justify-content: center; // Align content in the center
-  }
-}
-
 .input-container {
   position: relative;
-  width: 40px; /* Initially small for the icon */
-  transition: width 0.3s ease; /* Smooth transition on expand */
+  width: 40px;
+  transition: width 0.3s ease; /* Smooth transition */
+  overflow: hidden; /* Prevent overflow when collapsed */
+}
+
+.input-container.active {
+  width: 250px; /* Full expanded width */
+}
+
+.input-container input {
+  width: 100%;
+  padding-left: 45px !important; /* Space for the icon */
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none; /* Disable input when collapsed */
+  box-sizing: border-box;
+}
+
+.input-container.active input {
+  opacity: 1; /* Fully visible */
+  pointer-events: all; /* Enable input when expanded */
 }
 
 .search-icon {
@@ -28,25 +32,6 @@
   left: 10px;
   transform: translateY(-50%);
   font-size: 16px;
-  color: #aaa;
+  color: white;
   cursor: pointer;
-}
-
-.search-input {
-  width: 100%;
-  padding-left: 35px; /* Add space for the icon */
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  outline: none;
-  transition: opacity 0.3s ease;
-  opacity: 0; /* Hidden by default */
-  visibility: hidden;
-}
-.input-container.active {
-  width: 250px; /* Expand to full width */
-}
-
-.search-input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }

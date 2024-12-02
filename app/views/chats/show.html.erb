@@ -3,6 +3,7 @@
 </div>
 
 <div class="container chat">
+<%= render "chats/join" %>
   <%= turbo_stream_from "chat_#{@chat.id}_messages" %>
   <div id="messages" class="messages">
     <% @chat.messages.each do |message| %>

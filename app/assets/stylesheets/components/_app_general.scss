@@ -2,20 +2,20 @@
   margin: 0;
   height: 100vh;
   overflow-x: hidden;
-  background: linear-gradient(45deg, #A8E6CF, #D4E157, #9C27B0, #BA68C8);
+  background: linear-gradient(45deg, #A8E6CF, #D4E157, #BA68C8);
   background-size: 400% 400%;
   animation: gradientAnimation 10s ease infinite;
 }
 
 @keyframes gradientAnimation {
   0% {
-    background-position: 0% 0%;
+    background-position: 0% 0%; /* Start from the top-left */
   }
   50% {
-    background-position: 100% 100%;
+    background-position: 100% 0%; /* Move horizontally only */
   }
   100% {
-    background-position: 0% 0%;
+    background-position: 0% 0%; /* End at the original position */
   }
 }
 
@@ -29,6 +29,8 @@ body {
   min-height: 100vh;
   justify-content: space-between;
   margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 .description {

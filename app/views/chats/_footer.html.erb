@@ -1,5 +1,5 @@
 <div class="footer">
-    <%= link_to image_tag('chats.png', class: "footer-icon"), yourchats_path %>
-    <%= link_to image_tag('home.png', class: "footer-icon"), list_path %>
-    <%= link_to image_tag('avatar.png', class: "footer-icon"), user_path %>
+    <%= link_to image_tag('chats.png', class: "footer-icon"), current_user ? yourchats_path : root_path %>
+    <%= link_to image_tag('home.png', class: "footer-icon"), current_user ? list_path : root_path %>
+    <%= link_to image_tag('avatar.png', class: "footer-icon"), current_user ? user_path : root_path %>
 </div>

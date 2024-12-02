@@ -22,11 +22,13 @@ Rails.application.routes.draw do
     resources :messages, only: [:new, :create]
   end
 
-  resources :stareds, only: [:create, :destroy]
+  resources :stareds, only: [:show, :create, :destroy]
   get 'profile', to: 'users#show', as: :user
 
   get 'yourchats', to: 'chats#list_by_user', as: :yourchats
   get 'createdchats', to: 'chats#created_by_user', as: :createdchats
+
+  resources :joined_chats, only: [:create]
 
   # devise_scope :user do
   #   delete '/users/sign_out', to: 'devise/sessions#destroy'
