@@ -23,7 +23,6 @@
   <body class="app-background" data-current-user-id="<%= current_user ? current_user.id : "" %>">
     <div>
       <%= yield %>
-      <%= render "shared/flashes" %>
     </div>
     <%= render "chats/footer" %>
   </body>
