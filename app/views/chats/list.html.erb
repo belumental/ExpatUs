@@ -2,6 +2,10 @@
   <%= render "shared/searchbar" %>
   <h1 class="title">Welcome Home <%= current_user.username.to_s.capitalize %> </h1>
   <h1 class="title">Trending Chats</h1>
+      <div class="button-container">
+      <%= link_to "Create a Chat", new_chat_path(@chat), class: "btn btn-secondary" %>
+    </div>
+    <br>
   <div class="container d-flex flex-column align-items-center">
     <div class="row w-100">
       <% @chats.each do |chat| %>
@@ -18,8 +22,6 @@
         </div>
       <% end %>
     </div>
-    <div class="button-container">
-      <%= link_to "Create a Chat", new_chat_path(@chat), class: "btn btn-secondary" %>
-    </div>
+
   </div>
 </div>
