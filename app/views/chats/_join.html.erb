@@ -1,0 +1,1 @@
+<%= button_to "#{@joined ? 'Joined!' : 'Join'}", '#', method: :post, remote: true, class: "btn btn-secondary join-btn", data: { controller: 'join-button', chat_id: @chat.id, action: "click->join-button#join" }, disabled: @joined %>

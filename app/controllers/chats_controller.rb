@@ -23,17 +23,28 @@ class ChatsController < ApplicationController
   def show
     @chat = Chat.find(params[:id])
     @message = Message.new
+
+    if current_user.chats.include?(@chat)
+      @joined = true
+    else
+      @joined = false
+    end
   end
 
   def list_by_user
     unless params[:query].present?
       my_messages = Message.where(user_id: current_user.id)
-      chats = []
+
+      # to get the chats we clicked 'join' for
+      chats = current_user.chats
+
+      # to get the chats we have written a message in
       my_messages.each do |my_message|
         unless chats.include?(my_message.chat)
           chats.push(my_message.chat)
         end
       end
+
       # @chats = User.find(current_user.id).chats
       @chats_with_messages_count = []
       online_num = self.compute_online_user_num_on_chat.to_h
@@ -52,6 +63,7 @@ class ChatsController < ApplicationController
   end
 
   def list
+    @user = current_user
     @chats = Chat.all
     if params[:query].present?
       @chats = Chat.search_by_title_and_synopsis(params[:query])
@@ -71,22 +83,22 @@ class ChatsController < ApplicationController
   end
 
   def compute_online_user_num_on_chat
-     # Select all message that message.user.online = true
-     messages = Message.includes(:user).where(user: {online: true})
-     # Remove repeatted messages
-     seen = Set.new
-     now_ele_arr = messages.select do |item|
-       identifier = "#{item['user_id']}_#{item['chat_id']}"
-       unless seen.include?(identifier)
-         seen.add(identifier)
-       end
-     end
-     # Count the num by chat_id
-     counts = Hash.new(0)
-     now_ele_arr.each do |item|
-       value = item.chat_id
-       counts[value] += 1
-     end
-     counts
+    # Select all message that message.user.online = true
+    messages = Message.includes(:user).where(user: {online: true})
+    # Remove repeatted messages
+    seen = Set.new
+    now_ele_arr = messages.select do |item|
+      identifier = "#{item['user_id']}_#{item['chat_id']}"
+      unless seen.include?(identifier)
+        seen.add(identifier)
+      end
+    end
+    # Count the num by chat_id
+    counts = Hash.new(0)
+    now_ele_arr.each do |item|
+      value = item.chat_id
+      counts[value] += 1
+    end
+    counts
   end
 end
