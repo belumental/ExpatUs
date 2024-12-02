@@ -44,19 +44,8 @@
                           </span>
                         </p>
                       </div>
-                      <div class="avatar-list-stacked my-auto">
-                        <span class="avatar avatar-sm avatar-rounded">
-                          <%= image_tag "faces/5.jpg" %>
-                        </span>
-                        <span class="avatar avatar-sm avatar-rounded">
-                          <%= image_tag "faces/8.jpg" %>
-                        </span>
-                        <span class="avatar avatar-sm avatar-rounded">
-                          <%= image_tag "faces/2.jpg" %>
-                        </span>
-                        <span class="avatar avatar-sm avatar-rounded">
-                          <%= image_tag "faces/10.jpg" %>
-                        </span>
+                      <div class="avatar-list-stacked my-auto" id="online-users-list-avatar-<%= chat['id'] %>">
+                        <%= render "chats/my_chats_online_users", online_num: chat['online_num'], chat: chat %>
                         <%= link_to "+#{chat['msgcount']}", chat_path(chat['id']), class: "avatar avatar-sm bg-primary text-fixed-white avatar-rounded" %>
                       </div>
                     </div>
