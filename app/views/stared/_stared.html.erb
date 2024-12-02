@@ -1,0 +1,12 @@
+<%= link_to raw(@starred ? '<i class="fa-solid fa-heart text-danger"></i>' : '<i class="fa-regular fa-heart"></i>'),
+      stared_path(message_id: message.id),
+      method: :post,
+      remote: true,
+      class: "btn btn-secondary",
+      data: {
+      controller: 'starred',
+      message_id: @message.id,
+      action: "click->starred#create" },
+      disabled: @starred || false %>
+      <strong><%= message.user.username %></strong>
+      <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
