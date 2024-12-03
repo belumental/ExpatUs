@@ -3,6 +3,7 @@
   width: 40px;
   transition: width 0.3s ease; /* Smooth transition */
   overflow: hidden; /* Prevent overflow when collapsed */
+  margin-left: 20px;
 }
 
 .input-container.active {
@@ -31,7 +32,7 @@
   top: 50%;
   left: 10px;
   transform: translateY(-50%);
-  font-size: 16px;
+  font-size: 20px;
   color: white;
   cursor: pointer;
 }

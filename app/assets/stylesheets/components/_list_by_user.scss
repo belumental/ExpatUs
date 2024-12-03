@@ -1,9 +1,13 @@
 .container-fluid {
+  padding: 0;
+  margin-top: 1rem;
+
   .main-chart-wrapper {
     padding: 1rem;
     gap: 1rem;
     display: flex;
     flex-direction: column;
+
 
     /* Chat Info Section */
     .chat-info {
@@ -42,7 +46,7 @@
               background-color: #5E9C6B;
               color: white;
               font-weight: bold;
-              border-radius: 4px 4px 0 0;
+              border-radius: 10px 10px 0 0;
             }
           }
         }
@@ -51,7 +55,8 @@
       /* Tab Content */
       .tab-content {
         .tab-pane {
-          padding: 1rem 0;
+
+
 
           .list-unstyled {
             margin-bottom: 0;
@@ -65,8 +70,8 @@
 
             /* Badge Style */
             .badge {
-              background-color: rgba(255, 255, 255, 0.263);
-              color: #5E9C6B;
+              background-color: #ffffff99;
+              color: #26bf65;
               padding: 0.3rem 0.5rem;
               border-radius: 10px;
               font-size: 0.875rem;
@@ -173,6 +178,11 @@
   font-size: 1rem;
   color: #333; /* Dark gray text color */
   margin-bottom: 0;
+
+  a {
+    color: #7100e2;
+    font-weight: bold;
+  }
 
   /* Target the <p> when followed by #online-users-list */
   & + #online-users-list {
