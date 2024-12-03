@@ -7,7 +7,6 @@
   <%= turbo_stream_from "chat_#{@chat.id}_messages" %>
   <div id="messages" class="messages" data-controller="message">
     <div class="alert alert-success d-none" data-message-target="success" id="stared-success"><a href="#" class="close" data-dismiss="alert">&times;</a>Stared Success!</div>
-    <%= render "stareds/stared_failed"%>
     <input type="checkbox" class="btn btn-check join-btn" id="btn-check-2-outlined" autocomplete="off" data-action="click->message#saveChecked">
     <label class="btn btn-outline-success" for="btn-check-2-outlined" data-message-target="checklabel">Star Messages</label><br>
     <% @chat.messages.each do |message| %>
