@@ -1,7 +1,7 @@
 class Message < ApplicationRecord
   belongs_to :user
   belongs_to :chat
-  has_many :stareds
+  has_many :stareds, dependent: :destroy
 
   after_create_commit :broadcast_message
 
