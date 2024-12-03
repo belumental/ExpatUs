@@ -32,7 +32,7 @@ class ChatsController < ApplicationController
       my_messages = Message.where(user_id: current_user.id)
 
       # to get the chats we clicked 'join' for
-      chats = []
+      chats = current_user.chats
 
       # to get the chats we have written a message in
       my_messages.each do |my_message|
