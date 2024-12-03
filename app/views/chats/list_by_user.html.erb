@@ -30,24 +30,24 @@
         </ul>
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="joined-tab-pane" role="tabpanel" aria-labelledby="joined-tab">
-            <ul class="list-unstyled mb-0 mt-2">
+            <ul class="list-unstyled mb-0 mt-2" id="my-chats-online-users">
               <% if @chats_with_messages_count.present? %>
-                <% @chats_with_messages_count.each_with_index do |chat, index| %>
+                <% @chats_with_messages_count.each do |chat| %>
                   <li>
                     <div class="d-flex align-items-center justify-content-between">
-                      <div>
-                        <p class="mb-0"><%= link_to chat['title'], chat_path(chat['id']) %></p>
-                        <div id="online-users-list"></div>
-                        <p class="mb-0">
-                          <span class="badge bg-success-transparent" id="online-users-list-<%= chat['id'] %>">
-                            <%= chat['online_num'] %> Online
-                          </span>
-                        </p>
-                      </div>
-                      <div class="avatar-list-stacked my-auto" id="online-users-list-avatar-<%= chat['id'] %>">
-                        <%= render "chats/my_chats_online_users", online_num: chat['online_num'], chat: chat %>
-                        <%= link_to "+#{chat['msgcount']}", chat_path(chat['id']), class: "avatar avatar-sm bg-primary text-fixed-white avatar-rounded" %>
-                      </div>
+                        <div>
+                            <p class="mb-0">
+                              <a href="/chats/<%= chat['id']%>"><%= chat['title'] %></a>
+                            </p>
+                            <div id="online-users-list"></div>
+                            <p class="mb-0">
+                              <span class="badge bg-success-transparent" id="online-users-list-<%= chat['id'] %>"><%= chat['online_num'].length %> Online</span>
+                            </p>
+                        </div>
+                        <div class="avatar-list-stacked my-auto" id="online-users-list-avatar-<%= chat['id'] %>">
+                          <%= render "chats/my_chats_online_users", online_num: chat['online_num'], chat: chat %>
+                          <a href="/chats/<%= chat['id']%>" class="avatar avatar-sm bg-primary text-fixed-white avatar-rounded"><%= "+#{chat['msgcount']}" %></a>
+                        </div>
                     </div>
                   </li>
                 <% end %>
