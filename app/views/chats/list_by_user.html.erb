@@ -59,30 +59,30 @@
           <div class="tab-pane fade" id="created-tab-pane" role="tabpanel" aria-labelledby="created-tab">
             <ul class="list-unstyled mb-0 mt-2">
                   <% if @created_chats.present? %>
-      <% @created_chats.each_with_index do |chat, index| %>
-        <li>
-          <div class="d-flex align-items-center justify-content-between">
-            <div>
-              <p class="mb-0"><%= link_to chat.title, chat_path(chat) %></p>
-              <p class="mb-0">
-                <span class="badge bg-success-transparent"><%= chat.messages.count %> Messages</span>
-              </p>
-            </div>
-            <div class="avatar-list-stacked my-auto">
-              <span class="avatar avatar-sm avatar-rounded">
-                <%= image_tag "faces/5.jpg" %> <!-- Replace with dynamic avatars if needed -->
-              </span>
-              <span class="avatar avatar-sm avatar-rounded">
-                <%= image_tag "faces/8.jpg" %> <!-- Replace with dynamic avatars if needed -->
-              </span>
-              <%= link_to "+#{chat.messages.count}", chat_path(chat), class: "avatar avatar-sm bg-primary text-fixed-white avatar-rounded" %>
-            </div>
-          </div>
-        </li>
-      <% end %>
-    <% else %>
-      <p class="fs-11 fw-semibold mb-1 op-7">You haven't created any chat groups yet.</p>
-    <% end %>
+                    <% @created_chats.each_with_index do |chat, index| %>
+                      <li>
+                        <div class="d-flex align-items-center justify-content-between">
+                          <div>
+                            <p class="mb-0"><%= link_to chat.title, chat_path(chat) %></p>
+                            <p class="mb-0">
+                              <span class="badge bg-success-transparent"><%= chat.messages.count %> Messages</span>
+                            </p>
+                          </div>
+                          <div class="avatar-list-stacked my-auto">
+                            <span class="avatar avatar-sm avatar-rounded">
+                              <%= image_tag "faces/5.jpg" %> <!-- Replace with dynamic avatars if needed -->
+                            </span>
+                            <span class="avatar avatar-sm avatar-rounded">
+                              <%= image_tag "faces/8.jpg" %> <!-- Replace with dynamic avatars if needed -->
+                            </span>
+                            <%= link_to "+#{chat.messages.count}", chat_path(chat), class: "avatar avatar-sm bg-primary text-fixed-white avatar-rounded" %>
+                          </div>
+                        </div>
+                      </li>
+                    <% end %>
+                  <% else %>
+                    <p class="fs-11 fw-semibold mb-1 op-7">You haven't created any chat groups yet.</p>
+                  <% end %>
             </ul>
           </div>
         </div>

@@ -1,11 +1,16 @@
 <div
     id="message-<%= message.id %>"
     class="message <%= message.user === user ? 'sent' : 'received' %>"
-    data-controller="message"
     data-message-user-id-value="<%= message.user.id %>">
   <div class="message-block">
+    <div class="form-check form-switch d-none" data-message-target="checkDivs">
+      <input class="form-check-input" type="checkbox" value="<%= message.id %>" data-message-target="checks"
+      data-message-msg-id-value="<%= message.id %>" id="flexSwitchCheckDefault">
+    </div>
     <small class="message-info">
-    <%= render partial: "stared", locals: { message: message, starred: starred } %>
+    <%# <%= # render partial: "stared", locals: { message: message, starred: starred } %>
+      <strong><%= message.user.username %></strong>
+      <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
     </small>
     <p class="message-content"><%= message.content %></p>
   </div>

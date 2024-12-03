@@ -4,3 +4,10 @@
   right: 16px;
   z-index: 1000;
 }
+
+.alert-success {
+  position: static;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+}
