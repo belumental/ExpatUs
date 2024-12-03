@@ -26,14 +26,33 @@ class StaredsController < ApplicationController
     else
       render json: { starred: false }, status: :unprocessable_entity
     end
-    # Rails.logger.error "xxxxxxxxx: #{params[:messageIds]}"
-    # @message = Message.find(params[:message_id])
-    # @starred_message = current_user.stareds.find(params[:message_id])
-
-    # if @starred_message.save
-    #   render json: { starred: true }
-    # else
-    #   render json: { error: @starred.errors.full_messages }, status: :unprocessable_entity
-    # end
   end
+
+  def destroy
+    transaction_success = false
+    begin
+      ActiveRecord::Base.transaction do
+        Rails.logger.info "Finding Stared record for user_id: #{current_user.id}, message_id: #{params[:id]}"
+        stared = Stared.lock("FOR UPDATE").find_by(user_id: current_user.id, message_id: params[:id])
+        if stared
+          Rails.logger.info "Deleting record with id: #{stared.id}"
+          stared.destroy!
+          Rails.logger.info "Deleted record with id: #{stared.id}"
+        else
+          Rails.logger.warn "Record not found for user_id: #{current_user.id}, message_id: #{params[:id]}"
+          raise ActiveRecord::RecordNotFound, "Stared record not found"
+        end
+      end
+      transaction_success = true
+    rescue => e
+      Rails.logger.error "Transaction failed: #{e.message}"
+    end
+
+    if transaction_success
+      render json: { starred: true }
+    else
+      render json: { starred: false }, status: :unprocessable_entity
+    end
+  end
+
 end
