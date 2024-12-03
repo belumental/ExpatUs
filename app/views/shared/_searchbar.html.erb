@@ -1,6 +1,6 @@
 <div class="row justify-content-center search" data-controller="search-bar">
   <div class="col-sm-3 my-3">
-    <%= form_with url: list_path, method: :get, class: "d-flex" do %>
+    <%= form_with url: list_path, method: :get do %>
       <div class="input-container" data-search-bar-target="container">
         <i class="fa fa-search search-icon" data-search-bar-target="icon"></i>
         <%= text_field_tag :query,
