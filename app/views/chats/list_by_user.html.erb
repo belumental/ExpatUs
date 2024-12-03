@@ -65,7 +65,9 @@
                           <div>
                             <p class="mb-0"><%= link_to chat.title, chat_path(chat) %></p>
                             <p class="mb-0">
-                              <span class="badge bg-success-transparent"><%= chat.messages.count %> Messages</span>
+                              <span class="badge bg-success-transparent" id="online-users-list-<%= chat['id'] %>">
+                            <%= chat['online_num'] %> Online
+                          </span>
                             </p>
                           </div>
                           <div class="avatar-list-stacked my-auto">
