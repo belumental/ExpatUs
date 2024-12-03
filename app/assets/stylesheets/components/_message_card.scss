@@ -192,8 +192,7 @@
 }
 
 // a {
-//   text-decoration: none;
-//   color: var(--default-text-color);
+//   color: rgb(139 13 253);
 // }
 
 // .text-muted {
@@ -219,8 +218,8 @@
 
 
 .bg-success-transparent {
-  background-color: rgba(var(--success-rgb), .1) !important;
-  color: rgb(38, 191, 148) !important;
+  background-color: #ffffff99 !important;
+  color: #26bf65 !important;
 }
 .badge {
   padding: .25rem .45rem;
