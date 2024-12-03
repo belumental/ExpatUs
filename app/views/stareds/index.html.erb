@@ -1,9 +1,20 @@
-<h1> Starred Messages </h1>
+<br>
+<h1 class="title"> Starred Messages </h1>
+<br>
 
 <% @stareds.each do |stared| %>
-  <div class="user-card ">
-    <p><strong>Chat: </strong><%= stared.message.chat.title %></p>
-    <p><strong>Message: </strong><%= stared.message.content %></p>
-    <p><strong>From: </strong><%= stared.user.name %></p>
+  <div class="starred-card ">
+    <div class="row">
+      <p class="subject">Chat:</p>
+      <p class="value"><%= stared.message.chat.title %></p>
+    </div>
+    <div class="row">
+      <p class="subject">Message:</p>
+      <p class="value"><%= stared.message.content %></p>
+    </div>
+    <div class="row">
+      <p class="subject">From:</p>
+      <p class="value"><%= stared.user.username.capitalize %></p>
+    </div>
   </div>
 <% end %>
