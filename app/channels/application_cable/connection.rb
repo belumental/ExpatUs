@@ -3,7 +3,7 @@ module ApplicationCable
     identified_by :current_user
 
     def connect
-      self.current_user = find_verified_user
+      self.current_user = current_user
     end
 
     def beat
@@ -11,12 +11,12 @@ module ApplicationCable
 
     private
 
-    def find_verified_user
-      if verified_user = env['warden'].user
-        self.current_user = verified_user
-      else
-        reject_unauthorized_connection
-      end
-    end
+    # def find_verified_user
+    #   if verified_user = env['warden'].user
+    #     self.current_user = verified_user
+    #   else
+    #     reject_unauthorized_connection
+    #   end
+    # end
   end
 end
