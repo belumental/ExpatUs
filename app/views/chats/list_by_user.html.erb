@@ -41,16 +41,11 @@
                             </p>
                             <div id="online-users-list"></div>
                             <p class="mb-0">
-                              <span class="badge bg-success-transparent" id="online-users-list-<%= chat['id'] %>"><%= chat['msgcount'] %> Online</span>
+                              <span class="badge bg-success-transparent" id="online-users-list-<%= chat['id'] %>"><%= chat['online_num'].present?? chat['online_num'].length : 0 %> Online</span>
                             </p>
                         </div>
                         <div class="avatar-list-stacked my-auto" id="online-users-list-avatar-<%= chat['id'] %>">
-                          <% chat['online_num'].each do |user| %>
-                            <span class="avatar avatar-sm avatar-rounded">
-                              <%= cl_image_tag user.photo.key %>
-                            </span>
-                          <% end %>
-                          <%# <%= render "chats/my_chats_online_users", online_num: chat['online_num'], chat: chat %>
+                          <%= render "chats/my_chats_online_users", online_num: chat['online_num'], chat: chat %>
                           <a href="/chats/<%= chat['id']%>" class="avatar avatar-sm bg-primary text-fixed-white avatar-rounded"><%= "+#{chat['msgcount']}" %></a>
                         </div>
                     </div>
