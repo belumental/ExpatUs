@@ -1,7 +1,14 @@
 <div class="containter">
-  <%= render "shared/searchbar" %>
+
+<div class="background" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path('banner.jpg')%>);
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;">
+   <%= render "shared/searchbar" %>
   <h1 class="title">Welcome Home <%= current_user.username.to_s.capitalize %> </h1>
-  <h3 class="title">Trending Chats</h3>
+<br>
+</div>
+<h3 class="title">Trending Chats</h3>
       <div class="button-container">
       <%= link_to "Create a Chat", new_chat_path(@chat), class: "btn btn-secondary" %>
     </div>
