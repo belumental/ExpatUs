@@ -3,7 +3,7 @@
 </div>
 
 <div class="container chat">
-<%= render "chats/join" %>
+<%= render "chats/join" if current_user != @chat.user %>
   <%= turbo_stream_from "chat_#{@chat.id}_messages" %>
   <div id="messages" class="messages" data-controller="message">
     <div class="alert alert-success d-none" data-message-target="success" id="stared-success"><a href="#" class="close" data-dismiss="alert">&times;</a>Stared Success!</div>
