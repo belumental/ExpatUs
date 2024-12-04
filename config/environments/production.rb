@@ -47,7 +47,7 @@ Rails.application.configure do
     #   'https://expat-us-115babbe9461.herokuapp.com/',
     #   'http://expat-us-115babbe9461.herokuapp.com/'
     # ]
-  config.action_controller.default_url_options = { host: "yourproductiondomain.com" }
+  config.action_controller.default_url_options = { host: "expat-us-115babbe9461.herokuapp.com" }
 
   config.action_cable.mount_path = '/cable'
   config.action_cable.url = "wss://expat-us-115babbe9461.herokuapp.com/cable"

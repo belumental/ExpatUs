@@ -4,4 +4,4 @@ import "controllers"
 import "@popperjs/core"
 import "bootstrap"
 // import "@solid_cable/client"
-import "channels";
+// import "channels";

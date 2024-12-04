@@ -56,6 +56,20 @@ class ChatsController < ApplicationController
     else
       list
     end
+
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.append(:joined-tab-pane, partial: "chats/my_chats_online_users",
+          target: "joined-tab-pane",
+          locals: { chats_with_messages_count: @chats_with_messages_count })
+      end
+      format.html do
+        if request.path != yourchats_path
+          redirect_to yourchats_path
+        end
+      end
+    end
     @created_chats = Chat.where(user_id: current_user.id)
   end
 

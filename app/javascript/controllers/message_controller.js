@@ -7,7 +7,6 @@ export default class extends Controller {
   static targets = ['stars', 'msgId', 'starimgs']
   connect() {
     const currentUserId = parseInt(document.body.dataset.currentUserId, 10);
-    console.log(`xxxxxxxxx ${currentUserId}`)
     if (this.userIdValue === currentUserId) {
       this.element.classList.add('sent');
       this.element.classList.remove('received');

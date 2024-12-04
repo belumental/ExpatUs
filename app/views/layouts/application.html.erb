@@ -20,10 +20,16 @@
     <%= javascript_importmap_tags %>
   </head>
 
+  <%= turbo_stream_from "presence" %>
   <body class="app-background" data-current-user-id="<%= current_user ? current_user.id : "" %>">
     <div>
       <%= yield %>
     </div>
     <%= render "chats/footer" %>
+    <script>
+      window.addEventListener("beforeunload", () => {
+        navigator.sendBeacon("/users/mark_offline");
+      });
+    </script>
   </body>
 </html>
