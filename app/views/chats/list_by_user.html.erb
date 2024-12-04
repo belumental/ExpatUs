@@ -32,7 +32,7 @@
           <div class="tab-pane fade show active" id="joined-tab-pane" role="tabpanel" aria-labelledby="joined-tab">
             <ul class="list-unstyled mb-0 mt-2" id="my-chats-online-users">
               <% if @chats_with_messages_count.present? %>
-                <% @chats_with_messages_count.each do |chat| %>
+                <% @chats_with_messages_count.each_with_index do |chat, index| %>
                   <li>
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
@@ -41,11 +41,16 @@
                             </p>
                             <div id="online-users-list"></div>
                             <p class="mb-0">
-                              <span class="badge bg-success-transparent" id="online-users-list-<%= chat['id'] %>"><%= chat['online_num'].length %> Online</span>
+                              <span class="badge bg-success-transparent" id="online-users-list-<%= chat['id'] %>"><%= chat['msgcount'] %> Online</span>
                             </p>
                         </div>
                         <div class="avatar-list-stacked my-auto" id="online-users-list-avatar-<%= chat['id'] %>">
-                          <%= render "chats/my_chats_online_users", online_num: chat['online_num'], chat: chat %>
+                          <% chat['online_num'].each do |user| %>
+                            <span class="avatar avatar-sm avatar-rounded">
+                              <%= cl_image_tag user.photo.key %>
+                            </span>
+                          <% end %>
+                          <%# <%= render "chats/my_chats_online_users", online_num: chat['online_num'], chat: chat %>
                           <a href="/chats/<%= chat['id']%>" class="avatar avatar-sm bg-primary text-fixed-white avatar-rounded"><%= "+#{chat['msgcount']}" %></a>
                         </div>
                     </div>
