@@ -1,5 +1,5 @@
 .chat {
-  background: white;
+  background: var(--gray-2);
   margin-top: 9px;
   height: calc(100vh - 75px);
   display: flex;
@@ -23,6 +23,10 @@
     flex-direction: column;
     margin-bottom: 1rem;
     width: 100%;
+    background-color: rgba(255, 255, 255, 0.263);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   }
 
   #new_message {
@@ -58,12 +62,40 @@
 
   .message.sent .message-content {
     align-self: flex-start;
-    background: $blue;
+    background: $green;
     color: $light-gray;
   }
 
   .message.received .message-content {
     align-self: flex-end;
-    background: $gray-200;
+    background: $gray-400;
+  }
+
+  .card .card-body{
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  .card .card-body:hover .star{
+    display: block;
+  }
+
+  .star{
+    float: right;
+    display: none;
+  }
+
+  .stared {
+    float: right;
+  }
+
+  .star img{
+    width:1rem;
+    height:1rem;
+  }
+
+  .stared img{
+    width:1rem;
+    height:1rem;
   }
 }

@@ -1,23 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
+// import { fade } from "controllers/fade_in_out"
 
-
-function fadeOut(element) {
-  if(element.style.opacity !=0){
-    let speed = speed || 30 ;
-    let num = 10;
-    let st = setInterval(function(){
-      num--;
-      element.style.opacity = num / 10 ;
-      if(num<=0)  { clearInterval(st); }
-    },speed);
-  }
-}
 // Connects to data-controller="message"
 export default class extends Controller {
-  static values = { userId: Number, msgId: Number }
-  static targets = ['checkDivs', 'checks', 'checklabel', 'success']
+  static values = { userId: Number}
+  static targets = ['stars', 'msgId', 'starimgs']
   connect() {
     const currentUserId = parseInt(document.body.dataset.currentUserId, 10);
+    console.log(`xxxxxxxxx ${currentUserId}`)
     if (this.userIdValue === currentUserId) {
       this.element.classList.add('sent');
       this.element.classList.remove('received');
@@ -28,57 +18,60 @@ export default class extends Controller {
     this.element.scrollIntoView({ behavior: 'smooth' }); // scroll to the bottom of the page
   }
 
-  saveChecked(event) {
-    if(event.target.checked == true){
-      this.checkDivsTargets.forEach(function (element) {
-        element.classList.remove('d-none')
-      });
-      this.checklabelTarget.innerText = "Confirm"
-    }else{
-      let checkedTags = []
-      this.checksTargets.forEach((ele) => {
-        if(ele.checked == true){
-          checkedTags.push(ele)
+  star(event){
+    const msgId = [event.target.previousElementSibling.previousElementSibling.value]
+    const data = { messageIds: msgId };
+    console.log(data)
+    const url = "/stareds"
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": csrfToken,
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if(data.starred == true){
+          event.target.parentElement.classList.remove('star')
+          event.target.parentElement.classList.add('stared')
+          event.target.classList.add('d-none')
+          event.target.previousElementSibling.classList.remove('d-none')
+        }else{
+          alert("Star false!")
         }
       })
-      console.log(this.msgIdValue)
-      if (checkedTags == 0){
-        return
-      }
-      let messageIds = []
-      checkedTags.forEach((checkedTag) => {
-        messageIds.push(checkedTag.value)
-      })
-      const data = { messageIds: messageIds };
-      console.log(data)
-      const url = "/stareds"
-      const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
-      fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRF-Token": csrfToken,
-        },
-        body: JSON.stringify(data),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if(data.starred == true){
-            const alertSuccess = this.successTarget
-            alertSuccess.classList.remove("d-none")
-            fadeOut(alertSuccess)
-          }else{
-            alert("false")
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-      this.checkDivsTargets.forEach(function (element) {
-        element.classList.add('d-none')
+      .catch((error) => {
+        console.error("Error:", error);
       });
-      this.checklabelTarget.innerText = "Star Messages"
-    }
   }
 
+  unstar(event){
+    const msgId = event.target.previousElementSibling.value
+    console.log(msgId)
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+    fetch(`/stareds/${msgId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": csrfToken,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if(data.starred == true){
+          event.target.parentElement.classList.remove('stared')
+          event.target.parentElement.classList.add('star')
+          event.target.classList.add('d-none')
+          event.target.nextElementSibling.classList.remove('d-none')
+        }else{
+          alert("Unstar false!")
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
 }
