@@ -3,7 +3,7 @@
     id="message-<%= message.id %>"
     class="w-100 inline-block message <%= message.user.id === user.id ? 'sent' : 'received' %>"
     data-message-user-id-value="<%= message.user.id %>">
-  <div class="card mt-2 w-50 message-block position-relative">
+  <div class="card mt-2 w-75 message-block position-relative">
     <div class="card-body">
       <small class="message-info">
       <%# <%= # render partial: "stared", locals: { message: message, starred: starred } %>
@@ -11,7 +11,7 @@
           <%= cl_image_tag message.user.photo.key%>
         </span>
         <strong><%= message.user.username %></strong>
-        <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+        <i style="font-size: 0.75rem;"><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
       </small>
       <p class="message-content"><%= message.content %></p>
       <% if (message.stareds & user.stareds).present?  %>
