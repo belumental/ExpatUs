@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  mount ActionCable.server => '/cable'
-  devise_for :users
+  # mount ActionCable.server => '/cable'
+  devise_for :users, controllers: { sessions: 'users/sessions' }
   root to: "chats#index"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

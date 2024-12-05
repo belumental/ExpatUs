@@ -17,4 +17,9 @@ class UsersController < ApplicationController
         Chat.all
       end
   end
+
+  def mark_offline
+    current_user.update(online: false)
+    head :ok
+  end
 end
