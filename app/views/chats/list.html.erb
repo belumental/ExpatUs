@@ -15,6 +15,7 @@
     <br>
   <div class="container d-flex flex-column align-items-center">
     <div class="row w-100">
+    <% if @chats.present? %>
       <% @chats.each do |chat| %>
         <div class="col-12 mb-2 mt-4">
           <%= link_to chat_path(chat), style: "text-decoration: none; color: inherit;" do %>
@@ -28,6 +29,9 @@
           <% end %>
         </div>
       <% end %>
+      <% else %>
+      <h5>There are no chats with <%= params[:query] %>. You can create one!</h5>
+    <% end %>
     </div>
 
   </div>
