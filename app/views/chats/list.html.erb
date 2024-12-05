@@ -16,7 +16,7 @@
   <div class="container d-flex flex-column align-items-center">
     <div class="row w-100">
     <% if @chats.present? %>
-      <% @chats.each do |chat| %>
+      <% @chats.reverse.each do |chat| %>
         <div class="col-12 mb-2 mt-4">
           <%= link_to chat_path(chat), style: "text-decoration: none; color: inherit;" do %>
             <div class="card">

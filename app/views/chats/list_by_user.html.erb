@@ -52,16 +52,13 @@
                         <p class="mb-0"><%= link_to chat.title, chat_path(chat) %></p>
                         <p class="mb-0">
                           <span class="badge bg-success-transparent" id="online-users-list-<%= chat['id'] %>">
-                        <%= chat['online_num'] %> Online
+                        <%= 1 %> Online
                       </span>
                         </p>
                       </div>
                       <div class="avatar-list-stacked my-auto">
                         <span class="avatar avatar-sm avatar-rounded">
-                          <%= image_tag "faces/5.jpg" %> <!-- Replace with dynamic avatars if needed -->
-                        </span>
-                        <span class="avatar avatar-sm avatar-rounded">
-                          <%= image_tag "faces/8.jpg" %> <!-- Replace with dynamic avatars if needed -->
+                          <%= image_tag "faces/22.png" %> <!-- Replace with dynamic avatars if needed -->
                         </span>
                         <%= link_to "+#{chat.messages.count}", chat_path(chat), class: "avatar avatar-sm bg-primary text-fixed-white avatar-rounded" %>
                       </div>
