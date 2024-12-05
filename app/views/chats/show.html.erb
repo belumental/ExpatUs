@@ -1,11 +1,11 @@
 <div>
-  <%= link_to image_tag('back.png', class: "back-button", style: "margin-top: 8px;"), yourchats_path %>
+  <%= link_to image_tag('back.png', class: "back-button", style: "margin-top: 15px;"), yourchats_path %>
 </div>
 
 <div class="container chat">
 <%= render "chats/join" if current_user != @chat.user %>
 <div>
-  <h4 style="margin-top: 15px; margin-bottom: 15px; color: #5E9C6B"><%= @chat.title %></h4>
+  <h4 style="margin-top: 20px; margin-bottom: 10px; color: #5E9C6B"><%= @chat.title %></h4>
 </div>
   <%= turbo_stream_from "chat_#{@chat.id}_messages" %>
   <div id="messages" class="messages ">
