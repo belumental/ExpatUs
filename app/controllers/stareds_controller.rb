@@ -1,7 +1,7 @@
 class StaredsController < ApplicationController
 
   def index
-    @stareds = Stared.where(user_id: user.id)
+    @stareds = Stared.where(user_id: current_user.id)
   end
 
   def show
